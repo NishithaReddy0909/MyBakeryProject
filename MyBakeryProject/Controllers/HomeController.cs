@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using MyBakeryProject.Data;
 using MyBakeryProject.Models;
 
 namespace MyBakeryProject.Controllers
@@ -17,6 +18,11 @@ namespace MyBakeryProject.Controllers
         {
             _logger = logger;
         }
+        //private ApplicationDbContext _dbContext = null;
+        //public ApplicationDbContext ()
+        //{
+
+        //}
 
         public IActionResult Index()
         {

@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Product>
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to My Bakery</h1>
+    <a asp-action="Create" class="btn btn-outline-success float-lg-right">Create</a>
+
+
+    <div class="row">
+        @foreach (var p in Model)
+        {
+            <div class="card m-3" style="width:18rem">
+                <div class="card-header">@p.Name</div>
+
+                <img src="~/images/@p.ImageName" class="card-img-top" />
+                <p>@p.Description</p>
+                <div class="m-4">
+                    <p class="float-left">
+                        @string.Format("{0:C}", p.Price)
+                    </p>
+                    <a href="#" class="btn btn-sm btn-primary float-right">Buy Now</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
