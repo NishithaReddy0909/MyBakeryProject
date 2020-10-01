@@ -14,20 +14,47 @@ namespace MyBakeryProject.Repositories
         {
             _dbContext = dbContext;
         }
-        public void CreateProduct(Product product)
+        public int CreateProduct(Product product)
         {
-            if (product == null)
+            if (product != null)
             {
-                throw new ArgumentNullException(nameof(product));
+                _dbContext.Products.Add(product);
+                return _dbContext.SaveChanges();
             }
-            _dbContext.Add(product);
-            _dbContext.SaveChanges();
+            else
+            {
+                throw new NullReferenceException(nameof(product));
+            }
+        }
+
+        public int EditProduct(Product product)
+        {
+            var productFromDb = _dbContext.Products.SingleOrDefault(p => p.Id == product.Id);
+            if (productFromDb != null)
+            {
+                productFromDb.Name = product.Name;
+                productFromDb.Description = product.Description;
+                productFromDb.Price = product.Price;
+                productFromDb.ImageName = product.ImageName;
+                return _dbContext.SaveChanges();
+            }
+            else
+            {
+                throw new NullReferenceException();
+            }
         }
 
         public IEnumerable<Product> GetProducts()
         {
-            var products = _dbContext.Products.ToList();
-            return products;
+             return _dbContext.Products.ToList();
+            
+        }
+
+        public Product ProductGetById(int id)
+        {
+            return _dbContext.Products.SingleOrDefault(p => p.Id == id);
+            
+            
         }
     }
 }

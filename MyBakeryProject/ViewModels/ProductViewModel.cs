@@ -11,6 +11,7 @@ namespace MyBakeryProject.ViewModels
     public class ProductViewModel
     {
         [Required]
+        [Display(Name="Prodcut Name")]
         public string Name { get; set; }
         [Required]
         public string Description { get; set; }
@@ -20,6 +21,6 @@ namespace MyBakeryProject.ViewModels
 
         [Required]
         [Display(Name="Image FileName")]
-        public IFormFile ImageFile { get; set; }
+        public IFormFile ImageName { get; set; }
     }
 }

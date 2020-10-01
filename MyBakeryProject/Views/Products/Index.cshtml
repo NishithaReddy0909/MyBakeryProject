@@ -12,8 +12,8 @@
     <div class="row">
         @foreach (var p in Model)
         {
-            <div class="card m-3" style="width:18rem">
-                <div class="card-header">@p.Name</div>
+            <div class="card m-2" style="width:18rem">
+                <div class="card-header"><b>@p.Name</b></div>
 
                 <img src="~/images/@p.ImageName" class="card-img-top" />
                 <p>@p.Description</p>
@@ -22,6 +22,7 @@
                         @string.Format("{0:C}", p.Price)
                     </p>
                     <a href="#" class="btn btn-sm btn-primary float-right">Buy Now</a>
+                    <a asp-controller="Products" asp-action="EditProduct" asp-route-id="@p.Id" class="btn btn-success">Edit</a>
                 </div>
             </div>
         }

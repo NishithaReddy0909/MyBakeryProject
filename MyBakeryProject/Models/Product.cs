@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -15,6 +16,6 @@ namespace MyBakeryProject.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public float Price { get; set; }
-        public string ImageName { get; set; }
+        public String ImageName { get; set; }
     }
 }
