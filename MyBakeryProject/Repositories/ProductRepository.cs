@@ -27,6 +27,17 @@ namespace MyBakeryProject.Repositories
             }
         }
 
+        public void Delete(int? id)
+        {
+            if (id == null)
+            {
+                throw new NullReferenceException();
+            }
+            var product = _dbContext.Products.SingleOrDefault(p => p.Id == id);
+            _dbContext.Remove(product);
+            
+        }
+
         public int EditProduct(Product product)
         {
             var productFromDb = _dbContext.Products.SingleOrDefault(p => p.Id == product.Id);

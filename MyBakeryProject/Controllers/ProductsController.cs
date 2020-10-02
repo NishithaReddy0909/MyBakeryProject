@@ -44,7 +44,10 @@ namespace MyBakeryProject.Controllers
         [HttpPost]
         public IActionResult Create(ProductViewModel product)
         {
-
+            if (product == null)
+            {
+                return BadRequest(product);
+            }
 
             if (!ModelState.IsValid)
             {
@@ -137,6 +140,15 @@ namespace MyBakeryProject.Controllers
             ImageFile.CopyTo(new FileStream(imgFilePath, FileMode.Create));
 
             return folderName;
+        }
+        public IActionResult Delete(int? id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return NotFound();
+            }
+            _productrepository.Delete(id.Value);
+            return RedirectToAction("Index","Products");
         }
     }
     

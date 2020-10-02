@@ -12,5 +12,6 @@ namespace MyBakeryProject.Repositories
         Product ProductGetById(int id);
         int CreateProduct(Product product);
         int EditProduct(Product product);
+        void Delete(int? id);
     }
 }
